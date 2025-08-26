@@ -1,1 +1,270 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { 
+    background: #000005; 
+    font-family: 'Rajdhani', monospace; 
+    overflow: hidden; 
+    height: 100vh;
+    cursor: crosshair;
+}
+
+/* Neural Background */
+.neural-field {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 0, 128, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(128, 0, 255, 0.05) 0%, transparent 50%);
+    animation: neural-pulse 8s ease-in-out infinite alternate;
+}
+
+@keyframes neural-pulse {
+    0% { transform: scale(1) rotate(0deg); filter: hue-rotate(0deg); }
+    100% { transform: scale(1.3) rotate(360deg); filter: hue-rotate(360deg); }
+}
+
+.quantum-grid {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-image: 
+        linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 25px 25px;
+    animation: grid-flow 20s linear infinite;
+}
+
+@keyframes grid-flow {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(25px, 25px) rotate(90deg); }
+}
+
+/* Loading Matrix */
+.loading-matrix {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 5, 0.9); display: flex; align-items: center; justify-content: center;
+    z-index: 1000; backdrop-filter: blur(10px);
+}
+
+.matrix-code {
+    font-family: 'Orbitron', monospace; font-size: 2rem; color: #00ffff;
+    text-shadow: 0 0 20px #00ffff; animation: matrix-flicker 2s infinite;
+}
+
+@keyframes matrix-flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* Neural Header */
+.neural-header {
+    text-align: center; margin-bottom: 50px; position: relative;
+}
+
+.quantum-title {
+    font-size: 3.5rem; font-weight: 900; font-family: 'Orbitron', monospace;
+    background: linear-gradient(45deg, #00ffff, #ff0080, #8000ff);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    position: relative;
+}
+
+.sentinel { color: #ff0080; }
+
+.title-glow {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(45deg, #00ffff, #ff0080);
+    filter: blur(20px); opacity: 0.5; animation: glow-pulse 2s infinite;
+}
+
+@keyframes glow-pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.7; }
+}
+
+.sub-title {
+    color: rgba(0, 255, 255, 0.7); font-size: 1.2rem; letter-spacing: 2px;
+}
+
+/* Upload Neural */
+.upload-neural {
+    display: flex; justify-content: center; margin-bottom: 50px;
+}
+
+.liquid-drop {
+    position: relative; width: 300px; height: 300px;
+    background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(128, 0, 255, 0.1));
+    border: 2px solid rgba(0, 255, 255, 0.5); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: all 0.5s ease;
+    animation: liquid-float 4s ease-in-out infinite;
+}
+
+@keyframes liquid-float {
+    0%, 100% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-20px) scale(1.1); }
+}
+
+.drop-core {
+    position: relative; z-index: 10; text-align: center;
+}
+
+.neural-icon {
+    font-size: 4rem; margin-bottom: 15px; animation: icon-neural 2s infinite;
+}
+
+@keyframes icon-neural {
+    0%, 100% { transform: scale(1); filter: brightness(1); }
+    50% { transform: scale(1.2); filter: brightness(1.5); }
+}
+
+.drop-ripple {
+    position: absolute; top: 50%; left: 50%; width: 100%; height: 100%;
+    border: 2px solid rgba(0, 255, 255, 0.3); border-radius: 50%;
+    transform: translate(-50%, -50%); animation: ripple-expand 3s infinite;
+}
+
+@keyframes ripple-expand {
+    0% { width: 100%; height: 100%; opacity: 1; }
+    100% { width: 200%; height: 200%; opacity: 0; }
+}
+
+/* Ultra Dashboard */
+.ultra-dashboard {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0) rotateY(90deg);
+    width: 90%; max-width: 1200px; height: 85%; background: rgba(0, 0, 10, 0.9);
+    border: 1px solid rgba(0, 255, 255, 0.3); border-radius: 30px;
+    backdrop-filter: blur(30px); display: none; grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr; gap: 30px; padding: 40px;
+    box-shadow: 0 0 150px rgba(0, 255, 255, 0.5);
+    transition: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.ultra-dashboard.active {
+    display: grid; transform: translate(-50%, -50%) scale(1) rotateY(0deg);
+}
+
+/* Neural Display */
+.neural-display {
+    display: flex; justify-content: center; align-items: center;
+}
+
+.quantum-cube {
+    width: 200px; height: 200px; position: relative;
+    transform-style: preserve-3d; animation: cube-spin 10s linear infinite;
+}
+
+@keyframes cube-spin {
+    0% { transform: rotateX(0deg) rotateY(0deg); }
+    100% { transform: rotateX(360deg) rotateY(360deg); }
+}
+
+.cube-face {
+    position: absolute; width: 200px; height: 200px;
+    background: rgba(0, 255, 255, 0.1); border: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+.neural-canvas {
+    width: 100%; height: 100%; background: radial-gradient(circle, rgba(0, 255, 255, 0.1), transparent);
+    position: relative; overflow: hidden;
+}
+
+/* Threat Matrix */
+.threat-matrix {
+    display: flex; justify-content: center; align-items: center;
+}
+
+.threat-ring {
+    position: relative; width: 300px; height: 300px;
+}
+
+.ring-bg, .ring-progress {
+    fill: none; stroke-width: 10;
+}
+
+.ring-bg { stroke: rgba(255, 255, 255, 0.1); }
+.ring-progress {
+    stroke-linecap: round; transform: rotate(-90deg); transform-origin: 50% 50%;
+    transition: stroke-dashoffset 2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.threat-percentage {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    font-size: 3.5rem; font-weight: 900; font-family: 'Orbitron', monospace;
+    text-shadow: 0 0 30px currentColor;
+}
+
+/* Data Streams */
+.data-streams {
+    grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+
+.stream-card {
+    background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: 15px; padding: 20px; transition: all 0.3s ease;
+    position: relative; overflow: hidden;
+}
+
+.stream-card:hover {
+    transform: translateY(-5px) scale(1.02); box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
+}
+
+.stream-title {
+    color: #00ffff; font-size: 1rem; margin-bottom: 10px; display: flex; align-items: center; gap: 10px;
+}
+
+.stream-value {
+    color: rgba(255, 255, 255, 0.8); font-size: 0.9rem; margin-bottom: 10px;
+}
+
+.stream-bar { height: 8px; background: rgba(255, 255, 255, 0.1); border-radius: 4px; overflow: hidden; }
+.stream-fill {
+    height: 100%; border-radius: 4px; transition: width 2s ease-out;
+    background: linear-gradient(90deg, #00ff88, #ffff00, #ff6600, #ff0044);
+}
+
+/* Neural Interface */
+.neural-interface {
+    position: fixed; bottom: 30px; right: 30px; z-index: 100;
+}
+
+.neural-btn {
+    background: linear-gradient(45deg, #00ffff, #ff0080);
+    border: none; padding: 15px 30px; border-radius: 25px;
+    color: white; font-family: 'Orbitron', monospace; font-weight: 700;
+    cursor: pointer; transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+.neural-btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
+}
+
+/* Portal */
+.neural-portal {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 10, 0.9); display: none; align-items: center; justify-content: center;
+    z-index: 1000; backdrop-filter: blur(20px);
+}
+
+.portal-overlay {
+    background: rgba(0, 0, 20, 0.9); border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 20px; padding: 40px; backdrop-filter: blur(30px);
+}
+
+.close-portal {
+    position: absolute; top: 15px; right: 15px; background: none; border: none;
+    color: rgba(255, 255, 255, 0.7); font-size: 2rem; cursor: pointer;
+}
+
+.neural-input {
+    background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 10px; padding: 12px; color: white; margin-bottom: 15px;
+    font-family: 'Rajdhani', monospace;
+}
+
+.neural-submit {
+    background: linear-gradient(45deg, #00ffff, #ff0080); border: none;
+    border-radius: 10px; padding: 12px 24px; color: white;
+    font-family: 'Orbitron', monospace; font-weight: 700; cursor: pointer;
+  }
