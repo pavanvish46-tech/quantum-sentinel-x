@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: quantum-sentinel-x
+    env: node
+    region: oregon
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+    autoDeploy: true
+    disk:
+      name: quantum-data
+      mountPath: /app/data
+      sizeGB: 1
