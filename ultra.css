@@ -1,3 +1,4 @@
+/* Quantum Sentinel X - 3D Styles */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -13,7 +14,6 @@ body {
 .neural-field {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background: radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.1) 0%, transparent 50%);
-    animation: neural-pulse 4s ease-in-out infinite alternate;
 }
 
 .quantum-particles {
@@ -53,8 +53,9 @@ body {
 
 /* Main Container */
 .ultra-container {
-    position: relative; z-index: 10; height: 100vh;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    position: relative; z-index: 10; min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 20px; padding-top: 100px;
 }
 
 .neural-header {
@@ -74,13 +75,14 @@ body {
 }
 
 /* 3D Upload */
-.upload-3d {
-    perspective: 1000px; margin-bottom: 50px;
+.upload-section {
+    margin-bottom: 50px;
 }
 
 .upload-crystal {
     width: 250px; height: 250px; position: relative;
     transform-style: preserve-3d; animation: crystal-float 3s ease-in-out infinite;
+    margin: 0 auto;
 }
 
 .crystal-core {
@@ -99,6 +101,8 @@ body {
 .crystal-icon { font-size: 3rem; margin-bottom: 10px; animation: crystal-pulse 2s infinite; }
 @keyframes crystal-pulse { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
 
+.crystal-text { color: white; font-size: 1.2rem; margin-bottom: 5px; }
+
 .crystal-glow {
     position: absolute; width: 100%; height: 100%;
     border-radius: 50%; background: radial-gradient(circle, rgba(0, 255, 255, 0.3), transparent);
@@ -110,62 +114,18 @@ body {
     50% { transform: scale(1.2); opacity: 1; }
 }
 
-/* 3D Dashboard */
-.neural-dashboard {
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0) rotateY(90deg);
-    width: 90%; height: 80%; background: rgba(0, 0, 10, 0.9); border-radius: 30px;
-    display: none; grid-template-columns: 1fr 1fr; gap: 50px; padding: 40px;
-    transition: all 1s ease;
-}
-.neural-dashboard.active { display: grid; transform: translate(-50%, -50%) scale(1) rotateY(0deg); }
-
-.threat-sphere { display: flex; justify-content: center; align-items: center; }
-
-.sphere-3d {
-    width: 200px; height: 200px; position: relative;
-    transform-style: preserve-3d; animation: sphere-spin 8s linear infinite;
-}
-
-@keyframes sphere-spin {
-    0% { transform: rotateX(0deg) rotateY(0deg); }
-    100% { transform: rotateX(360deg) rotateY(360deg); }
-}
-
-.sphere-core {
-    position: relative; width: 100%; height: 100%;
-}
+/* Results */
+.results-section { display: none; margin-top: 50px; text-align: center; }
 
 .threat-display {
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    margin: 30px auto; width: 200px; height: 200px;
 }
 
-.sphere-bg, .sphere-progress { fill: none; stroke-width: 8; }
-.sphere-bg { stroke: rgba(255, 255, 255, 0.1); }
-.sphere-progress { stroke-linecap: round; transform: rotate(-90deg); transform-origin: 50% 50%; }
-
-.sphere-text {
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    font-size: 2.5rem; font-weight: 900; text-shadow: 0 0 20px currentColor;
+.progress-circle {
+    width: 100%; height: 100%; transform: rotate(-90deg);
 }
 
-.data-3d {
-    display: flex; flex-direction: column; gap: 20px;
-}
-
-.stream-3d {
-    background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(0, 255, 255, 0.2);
-    border-radius: 15px; padding: 20px; transition: all 0.3s ease;
-}
-.stream-3d:hover { transform: translateY(-5px) scale(1.02); }
-
-.stream-title { color: #00ffff; font-size: 1.1rem; margin-bottom: 10px; }
-.stream-bar { height: 6px; background: rgba(255, 255, 255, 0.1); border-radius: 3px; overflow: hidden; }
-.stream-fill {
-    height: 100%; border-radius: 3px; transition: width 2s ease-out;
-    background: linear-gradient(90deg, #00ff88, #ffff00, #ff6600, #ff0044);
-}
-
-/* Neural Login */
+/* Login */
 .login-section {
     position: fixed; bottom: 30px; right: 30px;
 }
@@ -185,16 +145,22 @@ body {
 
 .portal-overlay {
     background: rgba(0, 0, 20, 0.9); border: 1px solid rgba(0, 255, 255, 0.3);
-    border-radius: 20px; padding: 40px;
+    border-radius: 20px; padding: 40px; text-align: center;
+}
+
+.close-portal {
+    position: absolute; top: 15px; right: 15px; background: none; border: none;
+    color: rgba(255, 255, 255, 0.7); font-size: 2rem; cursor: pointer;
 }
 
 .neural-input {
     background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(0, 255, 255, 0.3);
     border-radius: 10px; padding: 12px; color: white; margin-bottom: 15px;
+    width: 100%; box-sizing: border-box;
 }
 
 .neural-submit {
     background: linear-gradient(45deg, #00ffff, #ff0080); border: none;
     border-radius: 10px; padding: 12px 24px; color: white;
-    font-weight: 700; cursor: pointer;
-        }
+    font-weight: 700; cursor: pointer; width: 100%;
+}
