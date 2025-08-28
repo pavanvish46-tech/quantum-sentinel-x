@@ -1,106 +1,200 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { 
     background: #000005; 
-    font-family: 'Rajdhani', monospace; 
-    overflow: hidden; 
-    height: 100vh;
+    color: white; 
+    font-family: 'Orbitron', monospace;
+    overflow: hidden;
+    perspective: 1000px;
 }
 
 /* Neural Background */
 .neural-field {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 0, 128, 0.1) 0%, transparent 50%);
-    animation: neural-pulse 8s ease-in-out infinite alternate;
+    background: radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.1) 0%, transparent 50%);
+    animation: neural-pulse 4s ease-in-out infinite alternate;
 }
-@keyframes neural-pulse { 0% { transform: scale(1); } 100% { transform: scale(1.3); } }
 
-.quantum-grid {
+.quantum-particles {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background-image: linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px);
-    background-size: 25px 25px;
-    animation: grid-flow 20s linear infinite;
+    pointer-events: none;
 }
-@keyframes grid-flow { 0% { transform: translate(0, 0); } 100% { transform: translate(25px, 25px); } }
 
-/* Loading */
-.loading-matrix {
+/* 3D Loading */
+.loading-3d {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 5, 0.9); display: flex; align-items: center; justify-content: center;
-    z-index: 1000; backdrop-filter: blur(10px);
+    background: rgba(0, 0, 10, 0.9); display: flex; flex-direction: column;
+    align-items: center; justify-content: center; z-index: 1000;
 }
-.matrix-code {
-    font-family: 'Orbitron', monospace; font-size: 2rem; color: #00ffff;
-    animation: matrix-flicker 2s infinite;
-}
-@keyframes matrix-flicker { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
-/* Header */
-.neural-header { text-align: center; margin-bottom: 50px; }
+.quantum-cube {
+    width: 150px; height: 150px; position: relative;
+    transform-style: preserve-3d; animation: cube-spin 3s linear infinite;
+}
+
+.cube-face {
+    position: absolute; width: 150px; height: 150px;
+    background: rgba(0, 255, 255, 0.1); border: 1px solid rgba(0, 255, 255, 0.5);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3rem; color: cyan; text-shadow: 0 0 20px cyan;
+}
+
+.cube-face.front { transform: translateZ(75px); }
+.cube-face.back { transform: translateZ(-75px) rotateY(180deg); }
+.cube-face.right { transform: rotateY(90deg) translateZ(75px); }
+.cube-face.left { transform: rotateY(-90deg) translateZ(75px); }
+.cube-face.top { transform: rotateX(90deg) translateZ(75px); }
+.cube-face.bottom { transform: rotateX(-90deg) translateZ(75px); }
+
+@keyframes cube-spin {
+    0% { transform: rotateX(0deg) rotateY(0deg); }
+    100% { transform: rotateX(360deg) rotateY(360deg); }
+
+/* Main Container */
+.ultra-container {
+    position: relative; z-index: 10; height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+
+.neural-header {
+    text-align: center; margin-bottom: 50px;
+}
+
 .quantum-title {
-    font-size: 3.5rem; font-family: 'Orbitron', monospace;
+    font-size: 3.5rem; font-weight: 900;
     background: linear-gradient(45deg, #00ffff, #ff0080);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
 
-/* Upload */
-.upload-neural { display: flex; justify-content: center; margin-bottom: 50px; }
-.liquid-drop {
-    width: 300px; height: 300px; background: rgba(0, 255, 255, 0.1);
-    border: 2px solid rgba(0, 255, 255, 0.5); border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer; animation: liquid-float 4s ease-in-out infinite;
+.sentinel { color: #ff0080; }
+
+.neural-subtitle {
+    color: rgba(0, 255, 255, 0.7); font-size: 1.2rem; letter-spacing: 2px;
 }
-@keyframes liquid-float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
 
-.neural-icon { font-size: 4rem; animation: icon-neural 2s infinite; }
-@keyframes icon-neural { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+/* 3D Upload */
+.upload-3d {
+    perspective: 1000px; margin-bottom: 50px;
+}
 
-/* Dashboard */
-.ultra-dashboard {
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0);
-    width: 90%; height: 85%; background: rgba(0, 0, 10, 0.9);
-    border: 1px solid rgba(0, 255, 255, 0.3); border-radius: 30px;
-    display: none; grid-template-columns: 1fr 1fr; gap: 30px; padding: 40px;
+.upload-crystal {
+    width: 250px; height: 250px; position: relative;
+    transform-style: preserve-3d; animation: crystal-float 3s ease-in-out infinite;
+}
+
+.crystal-core {
+    width: 100%; height: 100%; position: relative;
+    background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(128, 0, 255, 0.2));
+    border: 2px solid rgba(0, 255, 255, 0.5); border-radius: 50%;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    cursor: pointer; transition: all 0.5s ease;
+}
+
+@keyframes crystal-float {
+    0%, 100% { transform: translateY(0px) rotateY(0deg); }
+    50% { transform: translateY(-15px) rotateY(180deg); }
+}
+
+.crystal-icon { font-size: 3rem; margin-bottom: 10px; animation: crystal-pulse 2s infinite; }
+@keyframes crystal-pulse { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+
+.crystal-glow {
+    position: absolute; width: 100%; height: 100%;
+    border-radius: 50%; background: radial-gradient(circle, rgba(0, 255, 255, 0.3), transparent);
+    animation: glow-pulse 2s infinite;
+}
+
+@keyframes glow-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.2); opacity: 1; }
+}
+
+/* 3D Dashboard */
+.neural-dashboard {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0) rotateY(90deg);
+    width: 90%; height: 80%; background: rgba(0, 0, 10, 0.9); border-radius: 30px;
+    display: none; grid-template-columns: 1fr 1fr; gap: 50px; padding: 40px;
     transition: all 1s ease;
 }
-.ultra-dashboard.active { display: grid; transform: translate(-50%, -50%) scale(1); }
+.neural-dashboard.active { display: grid; transform: translate(-50%, -50%) scale(1) rotateY(0deg); }
 
-.threat-ring { position: relative; width: 300px; height: 300px; margin: 0 auto; }
-.ring-bg, .ring-progress { fill: none; stroke-width: 10; }
-.ring-bg { stroke: rgba(255, 255, 255, 0.1); }
-.ring-progress { stroke-linecap: round; transform: rotate(-90deg); }
-.threat-percentage {
+.threat-sphere { display: flex; justify-content: center; align-items: center; }
+
+.sphere-3d {
+    width: 200px; height: 200px; position: relative;
+    transform-style: preserve-3d; animation: sphere-spin 8s linear infinite;
+}
+
+@keyframes sphere-spin {
+    0% { transform: rotateX(0deg) rotateY(0deg); }
+    100% { transform: rotateX(360deg) rotateY(360deg); }
+}
+
+.sphere-core {
+    position: relative; width: 100%; height: 100%;
+}
+
+.threat-display {
     position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    font-size: 3rem; font-weight: 900; font-family: 'Orbitron', monospace;
 }
 
-.data-streams {
-    grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+.sphere-bg, .sphere-progress { fill: none; stroke-width: 8; }
+.sphere-bg { stroke: rgba(255, 255, 255, 0.1); }
+.sphere-progress { stroke-linecap: round; transform: rotate(-90deg); transform-origin: 50% 50%; }
+
+.sphere-text {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    font-size: 2.5rem; font-weight: 900; text-shadow: 0 0 20px currentColor;
 }
 
-.stream-card {
+.data-3d {
+    display: flex; flex-direction: column; gap: 20px;
+}
+
+.stream-3d {
     background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(0, 255, 255, 0.2);
-    border-radius: 15px; padding: 20px;
+    border-radius: 15px; padding: 20px; transition: all 0.3s ease;
 }
-.stream-title { color: #00ffff; font-size: 1rem; margin-bottom: 10px; }
-.stream-bar { height: 8px; background: rgba(255, 255, 255, 0.1); border-radius: 4px; overflow: hidden; }
+.stream-3d:hover { transform: translateY(-5px) scale(1.02); }
+
+.stream-title { color: #00ffff; font-size: 1.1rem; margin-bottom: 10px; }
+.stream-bar { height: 6px; background: rgba(255, 255, 255, 0.1); border-radius: 3px; overflow: hidden; }
 .stream-fill {
-    height: 100%; border-radius: 4px; transition: width 2s ease-out;
+    height: 100%; border-radius: 3px; transition: width 2s ease-out;
     background: linear-gradient(90deg, #00ff88, #ffff00, #ff6600, #ff0044);
 }
 
-.neural-btn {
+/* Neural Login */
+.login-section {
     position: fixed; bottom: 30px; right: 30px;
+}
+
+.neural-login-btn {
     background: linear-gradient(45deg, #00ffff, #ff0080); border: none;
     padding: 15px 30px; border-radius: 25px; color: white;
-    font-family: 'Orbitron', monospace; font-weight: 700; cursor: pointer;
+    font-weight: 700; cursor: pointer; transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
 }
 
 .neural-portal {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(0, 0, 10, 0.9); display: none; align-items: center; justify-content: center;
-    z-index: 1000;
-  }
+    z-index: 1000; backdrop-filter: blur(20px);
+}
+
+.portal-overlay {
+    background: rgba(0, 0, 20, 0.9); border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 20px; padding: 40px;
+}
+
+.neural-input {
+    background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 10px; padding: 12px; color: white; margin-bottom: 15px;
+}
+
+.neural-submit {
+    background: linear-gradient(45deg, #00ffff, #ff0080); border: none;
+    border-radius: 10px; padding: 12px 24px; color: white;
+    font-weight: 700; cursor: pointer;
+        }
