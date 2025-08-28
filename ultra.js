@@ -1,68 +1,73 @@
-// Quantum Sentinel X - Ultra Edition
-class NeuralNetwork {
-    constructor() {
-        this.canvas = document.getElementById('neuralCanvas');
-        this.particles = [];
-        this.init();
-    }
+// Quantum Sentinel X - 3D Ultra Edition
+console.log('🧬 3D Neural System Loading...');
 
-    init() {
-        for (let i = 0; i < 30; i++) {
-            const particle = document.createElement('div');
-            particle.style.cssText = `position:absolute;width:2px;height:2px;background:cyan;border-radius:50%;box-shadow:0 0 10px cyan`;
-            this.canvas.appendChild(particle);
-            this.particles.push({
-                x: Math.random() * 200, y: Math.random() * 200,
-                vx: (Math.random() - 0.5) * 2, vy: (Math.random() - 0.5) * 2
-            });
-        }
-        this.animate();
-    }
-
-    animate() {
-        this.particles.forEach(p => {
-            p.x += p.vx; p.y += p.vy;
-            if (p.x < 0 || p.x > 200) p.vx *= -1;
-            if (p.y < 0 || p.y > 200) p.vy *= -1;
-            p.element = p.element || this.canvas.children[this.particles.indexOf(p)];
-            p.element.style.left = p.x + 'px';
-            p.element.style.top = p.y + 'px';
-        });
-        requestAnimationFrame(() => this.animate());
-    }
-}
-
-class UltraScanner {
+class Quantum3D {
     constructor() {
         this.init();
     }
 
     init() {
-        document.getElementById('uploadNeural').addEventListener('click', () => {
-            document.getElementById('fileInput').click();
+        this.setup3DUpload();
+        this.setupNeuralPortal();
+        this.createParticles();
+    }
+
+    setup3DUpload() {
+        const dropArea = document.querySelector('.upload-crystal');
+        const fileInput = document.getElementById('fileInput');
+
+        // Click to upload
+        dropArea.addEventListener('click', () => fileInput.click());
+
+        // Drag & drop
+        dropArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropArea.style.transform = 'scale(1.1) rotateY(180deg)';
         });
-        document.getElementById('fileInput').addEventListener('change', (e) => this.handleUpload(e));
+
+        dropArea.addEventListener('dragleave', () => {
+            dropArea.style.transform = 'scale(1) rotateY(0deg)';
+        });
+
+        dropArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            const files = e.dataTransfer.files;
+            if (files[0]?.name?.endsWith('.apk')) {
+                this.startQuantumAnalysis(files[0]);
+            }
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files[0]?.name?.endsWith('.apk')) {
+                this.startQuantumAnalysis(e.target.files[0]);
+            }
+        });
     }
 
-    handleUpload(e) {
-        const file = e.target.files[0];
-        if (file && file.name.endsWith('.apk')) {
-            this.startAnalysis();
-        } else {
-            alert('Please upload a valid APK file');
-        }
+    setupNeuralPortal() {
+        window.openNeuralPortal = () => document.getElementById('neuralPortal').style.display = 'flex';
+        window.closeNeuralPortal = () => document.getElementById('neuralPortal').style.display = 'none';
+        window.handleNeuralLogin = (e) => {
+            e.preventDefault();
+            alert('🔗 Neural Interface Activated!');
+            closeNeuralPortal();
+        };
     }
 
-    startAnalysis() {
-        document.getElementById('loadingMatrix').style.display = 'flex';
+    startQuantumAnalysis(file) {
+        console.log('🚀 Analyzing:', file.name);
+        
+        // 3D Loading
+        document.getElementById('loading3d').style.display = 'flex';
+        
         setTimeout(() => {
-            document.getElementById('loadingMatrix').style.display = 'none';
-            document.getElementById('ultraDashboard').classList.add('active');
-            this.animateResults();
-        }, 3000);
+            document.getElementById('loading3d').style.display = 'none';
+            document.getElementById('neuralDashboard').classList.add('active');
+            this.animateThreatAnalysis();
+        }, 4000);
     }
 
-    animateResults() {
+    animateThreatAnalysis() {
         const threats = {
             malware: Math.floor(Math.random() * 25) + 75,
             trojans: Math.floor(Math.random() * 35) + 65,
@@ -72,22 +77,23 @@ class UltraScanner {
             encryption: Math.floor(Math.random() * 40) + 60
         };
 
-        this.animateRing(Object.values(threats).reduce((a, b) => a + b) / Object.values(threats).length);
-        this.updateStreams(threats);
+        this.animateSphere(threats);
+        this.update3DStreams(threats);
     }
 
-    animateRing(overall) {
+    animateSphere(threats) {
+        const overall = Math.floor(Object.values(threats).reduce((a, b) => a + b) / Object.values(threats).length);
         let current = 0;
         const interval = setInterval(() => {
             current++;
-            document.getElementById('threatPercentage').textContent = current + '%';
-            document.getElementById('threatRing').style.strokeDashoffset = 879.65 - (879.65 * current / 100);
-            document.getElementById('threatRing').style.stroke = current > 80 ? '#ff0044' : current > 60 ? '#ff6600' : '#00ff88';
+            document.getElementById('sphereText').textContent = current + '%';
+            document.getElementById('sphereProgress').style.strokeDashoffset = 879.65 - (879.65 * current / 100);
+            document.getElementById('sphereProgress').style.stroke = current > 80 ? '#ff0044' : current > 60 ? '#ff6600' : '#00ff88';
             if (current >= overall) clearInterval(interval);
         }, 25);
     }
 
-    updateStreams(threats) {
+    update3DStreams(threats) {
         Object.keys(threats).forEach(key => {
             const fill = document.getElementById(key + 'Fill');
             const value = document.getElementById(key + 'Value');
@@ -95,14 +101,29 @@ class UltraScanner {
             value.textContent = threats[key] > 80 ? 'CRITICAL' : threats[key] > 60 ? 'HIGH' : threats[key] > 40 ? 'MEDIUM' : 'LOW';
         });
     }
+
+    createParticles() {
+        // Create floating particles
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'quantum-particle';
+            particle.style.cssText = `
+                position: absolute; width: 2px; height: 2px; background: cyan;
+                border-radius: 50%; box-shadow: 0 0 10px cyan;
+                animation: float ${Math.random() * 10 + 5}s linear infinite;
+                left: ${Math.random() * 100}%; top: ${Math.random() * 100}%;
+            `;
+            document.querySelector('.quantum-particles').appendChild(particle);
+        }
+    }
 }
 
-// Portal
-function openNeuralPortal() { document.getElementById('neuralPortal').style.display = 'flex'; }
-function closeNeuralPortal() { document.getElementById('neuralPortal').style.display = 'none'; }
-function handleNeuralLogin(e) { e.preventDefault(); alert('🔗 Neural interface activated!'); closeNeuralPortal(); }
-
+// Auto-start
 document.addEventListener('DOMContentLoaded', () => {
-    new NeuralNetwork();
-    new UltraScanner();
+    setTimeout(() => {
+        document.getElementById('loading3d').style.display = 'none';
+        document.getElementById('mainContainer').style.display = 'block';
+    }, 3000);
+    
+    new Quantum3D();
 });
