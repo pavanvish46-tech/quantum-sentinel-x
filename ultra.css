@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { 
+    background: #000005; 
+    font-family: 'Rajdhani', monospace; 
+    overflow: hidden; 
+    height: 100vh;
+}
+
+/* Neural Background */
+.neural-field {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 0, 128, 0.1) 0%, transparent 50%);
+    animation: neural-pulse 8s ease-in-out infinite alternate;
+}
+@keyframes neural-pulse { 0% { transform: scale(1); } 100% { transform: scale(1.3); } }
+
+.quantum-grid {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-image: linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 25px 25px;
+    animation: grid-flow 20s linear infinite;
+}
+@keyframes grid-flow { 0% { transform: translate(0, 0); } 100% { transform: translate(25px, 25px); } }
+
+/* Loading */
+.loading-matrix {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 5, 0.9); display: flex; align-items: center; justify-content: center;
+    z-index: 1000; backdrop-filter: blur(10px);
+}
+.matrix-code {
+    font-family: 'Orbitron', monospace; font-size: 2rem; color: #00ffff;
+    animation: matrix-flicker 2s infinite;
+}
+@keyframes matrix-flicker { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+/* Header */
+.neural-header { text-align: center; margin-bottom: 50px; }
+.quantum-title {
+    font-size: 3.5rem; font-family: 'Orbitron', monospace;
+    background: linear-gradient(45deg, #00ffff, #ff0080);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+/* Upload */
+.upload-neural { display: flex; justify-content: center; margin-bottom: 50px; }
+.liquid-drop {
+    width: 300px; height: 300px; background: rgba(0, 255, 255, 0.1);
+    border: 2px solid rgba(0, 255, 255, 0.5); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; animation: liquid-float 4s ease-in-out infinite;
+}
+@keyframes liquid-float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+
+.neural-icon { font-size: 4rem; animation: icon-neural 2s infinite; }
+@keyframes icon-neural { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+
+/* Dashboard */
+.ultra-dashboard {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0);
+    width: 90%; height: 85%; background: rgba(0, 0, 10, 0.9);
+    border: 1px solid rgba(0, 255, 255, 0.3); border-radius: 30px;
+    display: none; grid-template-columns: 1fr 1fr; gap: 30px; padding: 40px;
+    transition: all 1s ease;
+}
+.ultra-dashboard.active { display: grid; transform: translate(-50%, -50%) scale(1); }
+
+.threat-ring { position: relative; width: 300px; height: 300px; margin: 0 auto; }
+.ring-bg, .ring-progress { fill: none; stroke-width: 10; }
+.ring-bg { stroke: rgba(255, 255, 255, 0.1); }
+.ring-progress { stroke-linecap: round; transform: rotate(-90deg); }
+.threat-percentage {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    font-size: 3rem; font-weight: 900; font-family: 'Orbitron', monospace;
+}
+
+.data-streams {
+    grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+
+.stream-card {
+    background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: 15px; padding: 20px;
+}
+.stream-title { color: #00ffff; font-size: 1rem; margin-bottom: 10px; }
+.stream-bar { height: 8px; background: rgba(255, 255, 255, 0.1); border-radius: 4px; overflow: hidden; }
+.stream-fill {
+    height: 100%; border-radius: 4px; transition: width 2s ease-out;
+    background: linear-gradient(90deg, #00ff88, #ffff00, #ff6600, #ff0044);
+}
+
+.neural-btn {
+    position: fixed; bottom: 30px; right: 30px;
+    background: linear-gradient(45deg, #00ffff, #ff0080); border: none;
+    padding: 15px 30px; border-radius: 25px; color: white;
+    font-family: 'Orbitron', monospace; font-weight: 700; cursor: pointer;
+}
+
+.neural-portal {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 10, 0.9); display: none; align-items: center; justify-content: center;
+    z-index: 1000;
+  }
