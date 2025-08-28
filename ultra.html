@@ -1,128 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quantum Sentinel X - 3D Ultra Edition</title>
-    <link rel="stylesheet" href="ultra.css">
+    <title>Upload Test</title>
+    <style>
+        body { background: #000; color: white; font-family: Arial; text-align: center; padding: 50px; }
+        .upload-box {
+            border: 2px dashed cyan; padding: 50px; margin: 50px auto;
+            width: 300px; cursor: pointer; border-radius: 10px;
+        }
+        .results { margin-top: 30px; display: none; }
+    </style>
 </head>
 <body>
-    <!-- Neural Background -->
-    <div class="neural-field"></div>
-    <div class="quantum-particles"></div>
-
-    <!-- 3D Loading -->
-    <div class="loading-3d" id="loading3d">
-        <div class="quantum-cube">
-            <div class="cube-face front">📱</div>
-            <div class="cube-face back">🔮</div>
-            <div class="cube-face right">🧬</div>
-            <div class="cube-face left">⚡</div>
-            <div class="cube-face top">Q</div>
-            <div class="cube-face bottom">S</div>
-        </div>
-        <p>INITIALIZING 3D NEURAL NETWORK...</p>
+    <h1>🎯 Upload Test</h1>
+    
+    <!-- ✅ Simple upload -->
+    <div class="upload-box" onclick="document.getElementById('file').click()">
+        <h2>📱 CLICK TO UPLOAD APK</h2>
+        <input type="file" id="file" accept=".apk" style="display: none;">
+    </div>
+    
+    <div class="results" id="results">
+        <h3>📊 Analysis Complete</h3>
+        <p id="resultText">Upload file to see results</p>
     </div>
 
-    <!-- Main Interface -->
-    <div class="ultra-container" id="mainContainer">
-        <!-- Header -->
-        <header class="neural-header">
-            <h1 class="quantum-title">QUANTUM<span class="sentinel">SENTINEL</span>X</h1>
-            <p class="neural-subtitle">3D NEURAL APK ANALYZER</p>
-        </header>
-
-        <!-- 3D Upload Section -->
-        <div class="upload-section">
-            <h2 style="color: cyan; text-align: center; margin-bottom: 30px;">🧬 3D UPLOAD CRYSTAL</h2>
-            <div class="upload-crystal">
-                <div class="crystal-core">
-                    <input type="file" id="fileInput" accept=".apk" hidden>
-                    <div class="crystal-icon">📱</div>
-                    <div class="crystal-text">DROP APK HERE</div>
-                    <div class="crystal-glow"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 3D Results -->
-        <div class="results-section" id="resultsSection" style="display: none;">
-            <h2 style="color: cyan;">🎯 QUANTUM ANALYSIS</h2>
-            <div class="threat-display">
-                <svg width="200" height="200">
-                    <circle cx="100" cy="100" r="90" stroke="#00ffff" stroke-width="2" fill="none"/>
-                    <circle id="progressCircle" cx="100" cy="100" r="90" stroke="#ff0080" stroke-width="8" fill="none" stroke-dasharray="565.48" stroke-dashoffset="565.48"/>
-                    <text id="progressText" x="100" y="110" text-anchor="middle" fill="white" font-size="2rem">0%</text>
-                </svg>
-            </div>
-            <div id="threatResults"></div>
-        </div>
-
-        <!-- Neural Login Portal -->
-        <div class="login-section">
-            <button class="neural-login-btn" onclick="openNeuralPortal()">🔗 NEURAL ACCESS</button>
-            <div class="neural-portal" id="neuralPortal">
-                <div class="portal-overlay">
-                    <button class="close-portal" onclick="closeNeuralPortal()">×</button>
-                    <h3>🔗 NEURAL INTERFACE</h3>
-                    <form class="portal-form" onsubmit="handleNeuralLogin(event)">
-                        <input type="text" class="neural-input" placeholder="Neural ID" required>
-                        <input type="password" class="neural-input" placeholder="Quantum Key" required>
-                        <button type="submit" class="neural-submit">CONNECT</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quantum Sentinel X - Working Edition</title>
-    <link rel="stylesheet" href="ultra.css">
-</head>
-<body>
-    <!-- ✅ FIXED: Added all missing elements -->
-    <div class="main-container">
-        <!-- ✅ 3D Upload -->
-        <div class="upload-section">
-            <h2 style="color: cyan;">🧬 3D UPLOAD</h2>
-            <div class="upload-crystal" onclick="selectFile()">
-                <input type="file" id="fileInput" accept=".apk" hidden>
-                <div class="crystal-icon">📱</div>
-                <div class="crystal-text">CLICK TO UPLOAD</div>
-            </div>
-        </div>
-
-        <!-- ✅ 3D Results -->
-        <div class="results-section" id="resultsSection" style="display: none;">
-            <h2 style="color: cyan;">🎯 ANALYSIS RESULTS</h2>
-            <div id="threatDisplay"></div>
-        </div>
-
-        <!-- ✅ Neural Login -->
-        <div class="login-section">
-            <button id="neuralBtn" style="background: linear-gradient(45deg, #00ffff, #ff0080); color: white; padding: 15px 30px; border: none; border-radius: 25px; font-size: 1.2rem; cursor: pointer;">
-                🔗 NEURAL ACCESS
-            </button>
-            
-            <!-- ✅ FIXED: Added modal -->
-            <div id="neuralModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; align-items: center; justify-content: center;">
-                <div style="background: rgba(0,0,20,0.9); border: 1px solid cyan; border-radius: 20px; padding: 40px; text-align: center;">
-                    <button onclick="closeModal()" style="position: absolute; top: 10px; right: 10px; background: none; border: none; color: white; font-size: 2rem;">×</button>
-                    <h3 style="color: cyan; margin-bottom: 20px;">🔗 NEURAL INTERFACE</h3>
-                    <input type="text" placeholder="Neural ID" style="background: rgba(255,255,255,0.1); border: 1px solid cyan; border-radius: 10px; padding: 10px; color: white; width: 100%; margin-bottom: 15px;">
-                    <input type="password" placeholder="Quantum Key" style="background: rgba(255,255,255,0.1); border: 1px solid cyan; border-radius: 10px; padding: 10px; color: white; width: 100%; margin-bottom: 15px;">
-                    <button onclick="neuralLogin()" style="background: linear-gradient(45deg, #00ffff, #ff0080); border: none; padding: 10px 20px; border-radius: 10px; color: white; width: 100%;">CONNECT</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="ultra.js"></script>
-</body>
-</html>
-    <script src="ultra.js"></script>
+    <script>
+        // ✅ Simple file upload
+        document.getElementById('file').addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                document.getElementById('resultText').innerHTML = `
+                    <strong>File: ${file.name}</strong><br>
+                    Size: ${(file.size/1024/1024).toFixed(2)} MB<br>
+                    Status: ✅ UPLOADED
+                `;
+                document.getElementById('results').style.display = 'block';
+            }
+        });
+    </script>
 </body>
 </html>
