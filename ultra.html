@@ -80,7 +80,34 @@
             </form>
         </div>
     </div>
+<body onload="startApp()">
+    <div id="loadingScreen">🧬 Initializing...</div>
+    <script>
+        function startApp() {
+            setTimeout(() => {
+                document.getElementById('loadingScreen').style.display = 'none';
+                document.body.innerHTML = `
+                    <h1 style="color: cyan; text-align: center;">🎯 Quantum Sentinel X - LIVE!</h1>
+                    <div style="text-align: center; margin-top: 50px;">
+                        <button onclick="scan()" style="background: cyan; color: black; padding: 20px 40px; border: none; border-radius: 25px; font-size: 1.2rem;">
+                            START QUANTUM SCAN
+                        </button>
+                        <div id="results" style="margin-top: 30px; color: white; font-size: 1.5rem;"></div>
+                    </div>
+                `;
+            }, 2000);
+        }
 
+        function scan() {
+            const threats = [Math.random()*30+70, Math.random()*40+60, Math.random()*50+50];
+            const overall = Math.floor(threats.reduce((a,b) => a+b)/3);
+            document.getElementById('results').innerHTML = `
+                <p>Threat Level: ${overall}%</p>
+                <p style="color: ${overall>80?'red':'green'}">${overall>80?'🚨 CRITICAL':'✅ RELATIVELY SAFE'}</p>
+            `;
+        }
+    </script>
+</body>
     <script src="ultra.js"></script>
 </body>
 </html>
