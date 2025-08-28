@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quantum Sentinel X - Ultra Edition</title>
-    <link rel="stylesheet" href="css/ultra.css">
+    <link rel="stylesheet" href="ultra.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -19,7 +19,6 @@
 
     <!-- Main Interface -->
     <div class="ultra-interface">
-        <!-- Header -->
         <header class="neural-header">
             <h1 class="quantum-title">
                 QUANTUM <span class="sentinel">SENTINEL</span> X
@@ -28,21 +27,17 @@
             <p class="sub-title">NEURAL APK ANALYSIS SYSTEM</p>
         </header>
 
-        <!-- Upload Area -->
         <div class="upload-neural" id="uploadNeural">
             <div class="liquid-drop">
                 <div class="drop-core">
                     <div class="neural-icon">🧬</div>
                     <p>DROP APK TO ANALYZE</p>
-                    <div class="drop-ripple"></div>
+                    <input type="file" id="fileInput" accept=".apk" hidden>
                 </div>
-                <input type="file" id="fileInput" accept=".apk" hidden>
             </div>
         </div>
 
-        <!-- Analysis Dashboard -->
         <div class="ultra-dashboard" id="ultraDashboard">
-            <!-- Neural Network Display -->
             <div class="neural-display">
                 <div class="quantum-cube">
                     <div class="cube-face">
@@ -51,7 +46,6 @@
                 </div>
             </div>
 
-            <!-- Threat Analysis -->
             <div class="threat-matrix">
                 <div class="threat-ring">
                     <svg width="300" height="300">
@@ -62,53 +56,19 @@
                 </div>
             </div>
 
-            <!-- Data Streams -->
             <div class="data-streams">
-                <div class="stream-card" data-threat="malware">
-                    <div class="stream-title">🦠 Malware Signature</div>
-                    <div class="stream-value" id="malwareValue">Analyzing...</div>
-                    <div class="stream-bar"><div class="stream-fill" id="malwareFill"></div></div>
-                </div>
-
-                <div class="stream-card" data-threat="trojans">
-                    <div class="stream-title">🏦 Banking Trojans</div>
-                    <div class="stream-value" id="trojanValue">Scanning...</div>
-                    <div class="stream-bar"><div class="stream-fill" id="trojanFill"></div></div>
-                </div>
-
-                <div class="stream-card" data-threat="permissions">
-                    <div class="stream-title">🔐 Permission Analysis</div>
-                    <div class="stream-value" id="permissionValue">Processing...</div>
-                    <div class="stream-bar"><div class="stream-fill" id="permissionFill"></div></div>
-                </div>
-
-                <div class="stream-card" data-threat="injection">
-                    <div class="stream-title">⚡ Code Injection</div>
-                    <div class="stream-value" id="injectionValue">Detecting...</div>
-                    <div class="stream-bar"><div class="stream-fill" id="injectionFill"></div></div>
-                </div>
-
-                <div class="stream-card" data-threat="network">
-                    <div class="stream-title">🌐 Network Analysis</div>
-                    <div class="stream-value" id="networkValue">Monitoring...</div>
-                    <div class="stream-bar"><div class="stream-fill" id="networkFill"></div></div>
-                </div>
-
-                <div class="stream-card" data-threat="encryption">
-                    <div class="stream-title">🔒 Encryption Check</div>
-                    <div class="stream-value" id="encryptionValue">Validating...</div>
-                    <div class="stream-bar"><div class="stream-fill" id="encryptionFill"></div></div>
-                </div>
+                <div class="stream-card"><div class="stream-title">🦠 Malware</div><div class="stream-value" id="malwareValue">Standby</div><div class="stream-bar"><div class="stream-fill" id="malwareFill"></div></div></div>
+                <div class="stream-card"><div class="stream-title">🏦 Trojans</div><div class="stream-value" id="trojanValue">Standby</div><div class="stream-bar"><div class="stream-fill" id="trojanFill"></div></div></div>
+                <div class="stream-card"><div class="stream-title">🔐 Permissions</div><div class="stream-value" id="permissionValue">Standby</div><div class="stream-bar"><div class="stream-fill" id="permissionFill"></div></div></div>
+                <div class="stream-card"><div class="stream-title">⚡ Injection</div><div class="stream-value" id="injectionValue">Standby</div><div class="stream-bar"><div class="stream-fill" id="injectionFill"></div></div></div>
+                <div class="stream-card"><div class="stream-title">🌐 Network</div><div class="stream-value" id="networkValue">Standby</div><div class="stream-bar"><div class="stream-fill" id="networkFill"></div></div></div>
+                <div class="stream-card"><div class="stream-title">🔒 Encryption</div><div class="stream-value" id="encryptionValue">Standby</div><div class="stream-bar"><div class="stream-fill" id="encryptionFill"></div></div></div>
             </div>
         </div>
 
-        <!-- Neural Interface -->
-        <div class="neural-interface">
-            <button class="neural-btn" onclick="openNeuralPortal()">🔗 NEURAL ACCESS</button>
-        </div>
+        <button class="neural-btn" onclick="openNeuralPortal()">🔗 NEURAL ACCESS</button>
     </div>
 
-    <!-- Portal -->
     <div class="neural-portal" id="neuralPortal">
         <div class="portal-overlay">
             <button class="close-portal" onclick="closeNeuralPortal()">×</button>
@@ -121,6 +81,6 @@
         </div>
     </div>
 
-    <script src="js/ultra.js"></script>
+    <script src="ultra.js"></script>
 </body>
 </html>
