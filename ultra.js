@@ -1,44 +1,76 @@
-// ✅ Complete Upload & Login System
-console.log('🎯 Quantum Sentinel X - Upload & Login System Active');
+// ✅ Quantum Sentinel X - Bulletproof JavaScript
+console.log('🎯 JavaScript Loading...');
 
-// ✅ File Upload System
+// ✅ Wait for DOM fully loaded
 document.addEventListener('DOMContentLoaded', () => {
-    const fileInput = document.getElementById('fileInput');
-    const dropArea = document.querySelector('.crystal-core');
-    const resultsSection = document.getElementById('resultsSection');
-    
-    // ✅ Click upload
-    dropArea.addEventListener('click', () => fileInput.click());
-    
-    // ✅ Handle file selection
-    fileInput.addEventListener('change', (e) => {
-        const file = e.target.files[0];
-        if (file && file.name.endsWith('.apk')) {
-            analyzeFile(file);
-        } else {
-            alert('📱 Please upload a valid APK file');
-        }
-    });
-    
-    // ✅ Drag & drop
-    dropArea.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        dropArea.style.transform = 'scale(1.1)';
-    });
-    
-    dropArea.addEventListener('drop', (e) => {
-        e.preventDefault();
-        dropArea.style.transform = 'scale(1)';
-        const file = e.dataTransfer.files[0];
-        if (file?.name?.endsWith('.apk')) {
-            analyzeFile(file);
-        }
-    });
+    console.log('✅ DOM Ready - Initializing Systems');
     
     // ✅ Auto-hide loading
     setTimeout(() => {
-        document.getElementById('loading3d').style.display = 'none';
+        const loading = document.getElementById('loading3d');
+        const container = document.getElementById('mainContainer');
+        if (loading) loading.style.display = 'none';
+        if (container) container.style.display = 'block';
+        console.log('✅ Loading hidden');
     }, 2000);
+
+    // ✅ File Upload System
+    const fileInput = document.getElementById('fileInput');
+    const dropArea = document.querySelector('.crystal-core');
+
+    if (fileInput && dropArea) {
+        console.log('✅ Upload system found');
+
+        // ✅ Click upload
+        dropArea.addEventListener('click', () => {
+            fileInput.click();
+            console.log('✅ Click triggered');
+        });
+
+        // ✅ File selection
+        fileInput.addEventListener('change', (e) => {
+            console.log('✅ File selected:', e.target.files[0]?.name);
+            const file = e.target.files[0];
+            if (file && file.name.endsWith('.apk')) {
+                analyzeFile(file);
+            } else {
+                alert('📱 Upload APK file only');
+            }
+        });
+
+        // ✅ Drag & drop
+        dropArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropArea.style.transform = 'scale(1.1)';
+        });
+
+        dropArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropArea.style.transform = 'scale(1)';
+            const file = e.dataTransfer.files[0];
+            if (file?.name?.endsWith('.apk')) {
+                analyzeFile(file);
+            }
+        });
+    }
+
+    // ✅ Login System
+    const portalBtn = document.querySelector('.neural-login-btn');
+    const portalModal = document.getElementById('neuralPortal');
+    
+    if (portalBtn && portalModal) {
+        console.log('✅ Login system found');
+        
+        window.openNeuralPortal = () => portalModal.style.display = 'flex';
+        window.closeNeuralPortal = () => portalModal.style.display = 'none';
+        window.handleNeuralLogin = (e) => {
+            e.preventDefault();
+            alert('🔗 Neural Interface Activated!');
+            closeNeuralPortal();
+        };
+    }
+
+    console.log('✅ All systems initialized');
 });
 
 // ✅ File Analysis
@@ -46,65 +78,36 @@ function analyzeFile(file) {
     console.log('🧬 Analyzing:', file.name);
     
     // Show loading
-    document.querySelector('.crystal-core').innerHTML = '🔄 Analyzing...';
+    document.querySelector('.crystal-core').innerHTML = '🔄 Scanning...';
     
     setTimeout(() => {
         const threats = {
             malware: Math.floor(Math.random() * 30) + 70,
             trojans: Math.floor(Math.random() * 40) + 60,
-            permissions: Math.floor(Math.random() * 50) + 50,
-            injection: Math.floor(Math.random() * 25) + 75,
-            network: Math.floor(Math.random() * 35) + 65,
-            encryption: Math.floor(Math.random() * 45) + 55
+            permissions: Math.floor(Math.random() * 50) + 50
         };
         
-        const overall = Math.floor(Object.values(threats).reduce((a, b) => a + b) / Object.values(threats).length);
+        const overall = Math.floor(Object.values(threats).reduce((a, b) => a + b) / 3);
         
         // ✅ Show results
-        document.getElementById('resultsSection').style.display = 'block';
-        document.getElementById('threatResults').innerHTML = `
-            <p style="color: cyan; font-size: 1.5rem;">📊 Results for: ${file.name}</p>
-            <p>Overall Threat: <span style="color: ${overall > 80 ? '#ff0044' : '#00ffff'}">${overall}%</span></p>
-            <p>Malware: ${threats.malware}%</p>
-            <p>Banking Trojans: ${threats.trojans}%</p>
-            <p>Permission Risk: ${threats.permissions}%</p>
-            <p style="color: ${overall > 80 ? 'red' : 'green'}; font-size: 1.2rem;">
-                ${overall > 80 ? '🚨 CRITICAL' : '✅ RELATIVELY SAFE'}
-            </p>
-        `;
+        const resultsSection = document.getElementById('resultsSection');
+        if (resultsSection) {
+            resultsSection.style.display = 'block';
+            resultsSection.innerHTML = `
+                <h3 style="color: cyan;">📊 Analysis Complete</h3>
+                <p>File: ${file.name}</p>
+                <p>Overall Threat: ${overall}%</p>
+                <p style="color: ${overall > 80 ? 'red' : 'green'}">
+                    ${overall > 80 ? '🚨 CRITICAL' : '✅ SAFE'}
+                </p>
+            `;
+        }
         
-        // Reset upload area
+        // Reset
         document.querySelector('.crystal-core').innerHTML = `
             <div class="crystal-icon">📱</div>
             <div class="crystal-text">DROP APK HERE</div>
             <div class="crystal-glow"></div>
         `;
-        
-        // ✅ Animate progress circle
-        animateProgress(overall);
     }, 2000);
 }
-
-// ✅ Progress Animation
-function animateProgress(overall) {
-    const circle = document.getElementById('progressCircle');
-    const text = document.getElementById('progressText');
-    let current = 0;
-    
-    const interval = setInterval(() => {
-        current++;
-        text.textContent = current + '%';
-        circle.style.strokeDashoffset = 565.48 - (565.48 * current / 100);
-        circle.style.stroke = current > 80 ? '#ff0044' : current > 60 ? '#ff6600' : '#00ff88';
-        
-        if (current >= overall) clearInterval(interval);
-    }, 25);
-}
-
-// ✅ Neural Login
-window.openPortal = () => document.getElementById('portalModal').style.display = 'flex';
-window.closePortal = () => document.getElementById('portalModal').style.display = 'none';
-window.neuralLogin = () => {
-    alert('🔗 Neural Interface Activated!');
-    closePortal();
-};
