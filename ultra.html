@@ -3,111 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quantum Sentinel X - Ultra Edition</title>
+    <title>Quantum Sentinel X - Ultra Pro</title>
     <link rel="stylesheet" href="ultra.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Neural Background -->
     <div class="neural-field"></div>
-    <div class="quantum-grid"></div>
-    
-    <!-- Loading Matrix -->
-    <div class="loading-matrix" id="loadingMatrix">
-        <div class="matrix-code">INITIALIZING NEURAL NETWORK...</div>
+    <div class="quantum-particles"></div>
+
+    <!-- 3D Loading -->
+    <div class="loading-3d" id="loading3d">
+        <div class="quantum-cube">
+            <div class="cube-face front">Q</div>
+            <div class="cube-face back">S</div>
+            <div class="cube-face right">X</div>
+            <div class="cube-face left">⚡</div>
+            <div class="cube-face top">🧬</div>
+            <div class="cube-face bottom">🔮</div>
+        </div>
+        <p>INITIALIZING 3D NEURAL NETWORK...</p>
     </div>
 
     <!-- Main Interface -->
-    <div class="ultra-interface">
+    <div class="ultra-container" id="mainContainer" style="display: none;">
+        <!-- Header -->
         <header class="neural-header">
-            <h1 class="quantum-title">
-                QUANTUM <span class="sentinel">SENTINEL</span> X
-                <div class="title-glow"></div>
-            </h1>
-            <p class="sub-title">NEURAL APK ANALYSIS SYSTEM</p>
+            <h1 class="quantum-title">QUANTUM<span class="sentinel">SENTINEL</span>X</h1>
+            <p class="neural-subtitle">3D NEURAL APK ANALYZER</p>
         </header>
 
-        <div class="upload-neural" id="uploadNeural">
-            <div class="liquid-drop">
-                <div class="drop-core">
-                    <div class="neural-icon">🧬</div>
-                    <p>DROP APK TO ANALYZE</p>
+        <!-- 3D Upload Section -->
+        <div class="upload-3d">
+            <div class="upload-crystal">
+                <div class="crystal-core">
+                    <div class="crystal-icon">📱</div>
                     <input type="file" id="fileInput" accept=".apk" hidden>
+                    <div class="crystal-text">DROP APK HERE</div>
+                    <div class="crystal-glow"></div>
                 </div>
             </div>
         </div>
 
-        <div class="ultra-dashboard" id="ultraDashboard">
-            <div class="neural-display">
-                <div class="quantum-cube">
-                    <div class="cube-face">
-                        <div class="neural-canvas" id="neuralCanvas"></div>
+        <!-- 3D Neural Dashboard -->
+        <div class="neural-dashboard" id="neuralDashboard">
+            <!-- 3D Threat Sphere -->
+            <div class="threat-sphere">
+                <div class="sphere-3d">
+                    <div class="sphere-core">
+                        <div class="threat-display">
+                            <svg width="200" height="200">
+                                <circle class="sphere-bg" cx="100" cy="100" r="90"></circle>
+                                <circle class="sphere-progress" id="sphereProgress" cx="100" cy="100" r="90"></circle>
+                            </svg>
+                            <div class="sphere-text" id="sphereText">0%</div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="threat-matrix">
-                <div class="threat-ring">
-                    <svg width="300" height="300">
-                        <circle class="ring-bg" cx="150" cy="150" r="140"></circle>
-                        <circle class="ring-progress" id="threatRing" cx="150" cy="150" r="140"></circle>
-                    </svg>
-                    <div class="threat-percentage" id="threatPercentage">0%</div>
+            <!-- 3D Data Streams -->
+            <div class="data-3d">
+                <div class="stream-3d" data-threat="malware">
+                    <div class="stream-title">🦠 Malware</div>
+                    <div class="stream-value" id="malValue">Analyzing...</div>
+                    <div class="stream-bar"><div class="stream-fill" id="malFill"></div></div>
+                </div>
+                <div class="stream-3d" data-threat="trojans">
+                    <div class="stream-title">🏦 Banking Trojans</div>
+                    <div class="stream-value" id="trojanValue">Scanning...</div>
+                    <div class="stream-bar"><div class="stream-fill" id="trojanFill"></div></div>
+                </div>
+                <div class="stream-3d" data-threat="permissions">
+                    <div class="stream-title">🔐 Permissions</div>
+                    <div class="stream-value" id="permValue">Processing...</div>
+                    <div class="stream-bar"><div class="stream-fill" id="permFill"></div></div>
                 </div>
             </div>
+        </div>
 
-            <div class="data-streams">
-                <div class="stream-card"><div class="stream-title">🦠 Malware</div><div class="stream-value" id="malwareValue">Standby</div><div class="stream-bar"><div class="stream-fill" id="malwareFill"></div></div></div>
-                <div class="stream-card"><div class="stream-title">🏦 Trojans</div><div class="stream-value" id="trojanValue">Standby</div><div class="stream-bar"><div class="stream-fill" id="trojanFill"></div></div></div>
-                <div class="stream-card"><div class="stream-title">🔐 Permissions</div><div class="stream-value" id="permissionValue">Standby</div><div class="stream-bar"><div class="stream-fill" id="permissionFill"></div></div></div>
-                <div class="stream-card"><div class="stream-title">⚡ Injection</div><div class="stream-value" id="injectionValue">Standby</div><div class="stream-bar"><div class="stream-fill" id="injectionFill"></div></div></div>
-                <div class="stream-card"><div class="stream-title">🌐 Network</div><div class="stream-value" id="networkValue">Standby</div><div class="stream-bar"><div class="stream-fill" id="networkFill"></div></div></div>
-                <div class="stream-card"><div class="stream-title">🔒 Encryption</div><div class="stream-value" id="encryptionValue">Standby</div><div class="stream-bar"><div class="stream-fill" id="encryptionFill"></div></div></div>
+        <!-- Neural Login Portal -->
+        <div class="login-section">
+            <button class="neural-login-btn" onclick="openNeuralPortal()">🔗 NEURAL ACCESS</button>
+            <div class="neural-portal" id="neuralPortal">
+                <div class="portal-overlay">
+                    <button class="close-portal" onclick="closeNeuralPortal()">×</button>
+                    <h3>🔗 NEURAL INTERFACE</h3>
+                    <form class="portal-form" onsubmit="handleNeuralLogin(event)">
+                        <input type="text" class="neural-input" placeholder="Neural ID" required>
+                        <input type="password" class="neural-input" placeholder="Quantum Key" required>
+                        <button type="submit" class="neural-submit">CONNECT</button>
+                    </form>
+                </div>
             </div>
         </div>
-
-        <button class="neural-btn" onclick="openNeuralPortal()">🔗 NEURAL ACCESS</button>
     </div>
 
-    <div class="neural-portal" id="neuralPortal">
-        <div class="portal-overlay">
-            <button class="close-portal" onclick="closeNeuralPortal()">×</button>
-            <h3>🔗 NEURAL INTERFACE</h3>
-            <form class="portal-form" onsubmit="handleNeuralLogin(event)">
-                <input type="text" class="neural-input" placeholder="Neural ID" required>
-                <input type="password" class="neural-input" placeholder="Quantum Key" required>
-                <button type="submit" class="neural-submit">CONNECT</button>
-            </form>
-        </div>
-    </div>
-<body onload="startApp()">
-    <div id="loadingScreen">🧬 Initializing...</div>
-    <script>
-        function startApp() {
-            setTimeout(() => {
-                document.getElementById('loadingScreen').style.display = 'none';
-                document.body.innerHTML = `
-                    <h1 style="color: cyan; text-align: center;">🎯 Quantum Sentinel X - LIVE!</h1>
-                    <div style="text-align: center; margin-top: 50px;">
-                        <button onclick="scan()" style="background: cyan; color: black; padding: 20px 40px; border: none; border-radius: 25px; font-size: 1.2rem;">
-                            START QUANTUM SCAN
-                        </button>
-                        <div id="results" style="margin-top: 30px; color: white; font-size: 1.5rem;"></div>
-                    </div>
-                `;
-            }, 2000);
-        }
-
-        function scan() {
-            const threats = [Math.random()*30+70, Math.random()*40+60, Math.random()*50+50];
-            const overall = Math.floor(threats.reduce((a,b) => a+b)/3);
-            document.getElementById('results').innerHTML = `
-                <p>Threat Level: ${overall}%</p>
-                <p style="color: ${overall>80?'red':'green'}">${overall>80?'🚨 CRITICAL':'✅ RELATIVELY SAFE'}</p>
-            `;
-        }
-    </script>
-</body>
     <script src="ultra.js"></script>
 </body>
 </html>
