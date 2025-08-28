@@ -1,4 +1,14 @@
+// 🔧 Add to ultra.js top
+console.log('📡 Neural Interface Loading...');
 
+// 🔧 Add file existence check
+window.addEventListener('load', () => {
+    console.log('✅ Files loaded:', {
+        html: document.title,
+        css: !!document.querySelector('link[href*="css"]'),
+        js: !!document.querySelector('script[src*="js"]')
+    });
+});
 // Quantum Sentinel X - Ultra Edition
 class NeuralNetwork {
     constructor() {
