@@ -1,15 +1,15 @@
-// ✅ Working Upload & Login Implementation
-console.log('🎯 Quantum Sentinel X - Upload System Active');
+// ✅ Complete Upload & Login System
+console.log('🎯 Quantum Sentinel X - Upload & Login System Active');
 
-// ✅ File Upload
+// ✅ File Upload System
 document.addEventListener('DOMContentLoaded', () => {
     const fileInput = document.getElementById('fileInput');
+    const dropArea = document.querySelector('.crystal-core');
+    const resultsSection = document.getElementById('resultsSection');
     
     // ✅ Click upload
-    document.querySelector('.drop-area').addEventListener('click', () => {
-        fileInput.click();
-    });
-
+    dropArea.addEventListener('click', () => fileInput.click());
+    
     // ✅ Handle file selection
     fileInput.addEventListener('change', (e) => {
         const file = e.target.files[0];
@@ -19,21 +19,26 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('📱 Please upload a valid APK file');
         }
     });
-
+    
     // ✅ Drag & drop
-    document.querySelector('.drop-area').addEventListener('dragover', (e) => {
+    dropArea.addEventListener('dragover', (e) => {
         e.preventDefault();
-        e.currentTarget.style.transform = 'scale(1.1)';
+        dropArea.style.transform = 'scale(1.1)';
     });
-
-    document.querySelector('.drop-area').addEventListener('drop', (e) => {
+    
+    dropArea.addEventListener('drop', (e) => {
         e.preventDefault();
-        e.currentTarget.style.transform = 'scale(1)';
+        dropArea.style.transform = 'scale(1)';
         const file = e.dataTransfer.files[0];
         if (file?.name?.endsWith('.apk')) {
             analyzeFile(file);
         }
     });
+    
+    // ✅ Auto-hide loading
+    setTimeout(() => {
+        document.getElementById('loading3d').style.display = 'none';
+    }, 2000);
 });
 
 // ✅ File Analysis
@@ -41,16 +46,19 @@ function analyzeFile(file) {
     console.log('🧬 Analyzing:', file.name);
     
     // Show loading
-    document.querySelector('.drop-area').innerHTML = '🔄 Analyzing...';
+    document.querySelector('.crystal-core').innerHTML = '🔄 Analyzing...';
     
     setTimeout(() => {
         const threats = {
             malware: Math.floor(Math.random() * 30) + 70,
             trojans: Math.floor(Math.random() * 40) + 60,
-            permissions: Math.floor(Math.random() * 50) + 50
+            permissions: Math.floor(Math.random() * 50) + 50,
+            injection: Math.floor(Math.random() * 25) + 75,
+            network: Math.floor(Math.random() * 35) + 65,
+            encryption: Math.floor(Math.random() * 45) + 55
         };
         
-        const overall = Math.floor(Object.values(threats).reduce((a, b) => a + b) / 3);
+        const overall = Math.floor(Object.values(threats).reduce((a, b) => a + b) / Object.values(threats).length);
         
         // ✅ Show results
         document.getElementById('resultsSection').style.display = 'block';
@@ -66,12 +74,31 @@ function analyzeFile(file) {
         `;
         
         // Reset upload area
-        document.querySelector('.drop-area').innerHTML = `
-            <div style="font-size: 4rem;">📱</div>
-            <p style="color: white; margin: 10px 0;">Click or Drop APK File</p>
-            <div style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">Maximum 50MB</div>
+        document.querySelector('.crystal-core').innerHTML = `
+            <div class="crystal-icon">📱</div>
+            <div class="crystal-text">DROP APK HERE</div>
+            <div class="crystal-glow"></div>
         `;
+        
+        // ✅ Animate progress circle
+        animateProgress(overall);
     }, 2000);
+}
+
+// ✅ Progress Animation
+function animateProgress(overall) {
+    const circle = document.getElementById('progressCircle');
+    const text = document.getElementById('progressText');
+    let current = 0;
+    
+    const interval = setInterval(() => {
+        current++;
+        text.textContent = current + '%';
+        circle.style.strokeDashoffset = 565.48 - (565.48 * current / 100);
+        circle.style.stroke = current > 80 ? '#ff0044' : current > 60 ? '#ff6600' : '#00ff88';
+        
+        if (current >= overall) clearInterval(interval);
+    }, 25);
 }
 
 // ✅ Neural Login
